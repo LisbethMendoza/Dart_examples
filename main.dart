@@ -96,3 +96,51 @@ class private_property {
     }
   }
 }
+
+
+//Exceptions
+//TRY: The first part is try 
+//catch: for drive any exceptions.
+//on: for deive specific exceptions
+//Finally: to execute code that must always be executed.
+
+class Division implements Exception {
+  String errorMessage() {
+    return 'You cannot divide by zero!';
+  }
+}
+
+double divideNumbers(double a, double b) {
+  if (b == 0) {
+    throw Division();
+  }
+  return a / b;
+}
+
+void exception() {
+  try {
+    double result = divideNumbers(10, 0); // This will throw an exception
+    print('Result: $result');
+  } on Division catch (e) {
+    print(e.errorMessage()); // Custom error message
+  } catch (e) {
+    print('An unknown exception occurred: $e');
+  } finally {
+    print('Execution completed.');
+  }
+}
+
+//factory constructors are used when you need more control over object creation
+class Square extends Shape {}
+class Circle extends Shape {}
+
+class Shape {
+  Shape();  // Default constructor
+
+  // Factory constructor
+  factory Shape.fromTypeName(String typeName) {
+    if (typeName == 'square') return Square();  // Return a Square instance
+    if (typeName == 'circle') return Circle();  // Return a Circle instance
+    throw ArgumentError('Unrecognized $typeName');  // Throw an error for invalid type
+  }
+}
