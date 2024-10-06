@@ -60,3 +60,7 @@ class MyClass {
     return 'MyClass Name is for see the result: $name';
   }
 }
+
+
+//---------------------------------------------------------------------------------------//
+//Funtion in Dart
