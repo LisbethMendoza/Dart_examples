@@ -14,7 +14,6 @@ void main() {
 
   greet('Lisbeth');
 
-  print(Listas_d);
 }
 
 class variables {
@@ -96,93 +95,4 @@ class private_property {
       _aProperty = value;
     }
   }
-}
-
-//Exceptions
-//TRY: The first part is try
-//catch: for drive any exceptions.
-//on: for deive specific exceptions
-//Finally: to execute code that must always be executed.
-
-class Division implements Exception {
-  String errorMessage() {
-    return 'You cannot divide by zero!';
-  }
-}
-
-double divideNumbers(double a, double b) {
-  if (b == 0) {
-    throw Division();
-  }
-  return a / b;
-}
-
-void exception() {
-  try {
-    double result = divideNumbers(10, 0); // This will throw an exception
-    print('Result: $result');
-  } on Division catch (e) {
-    print(e.errorMessage()); // Custom error message
-  } catch (e) {
-    print('An unknown exception occurred: $e');
-  } finally {
-    print('Execution completed.');
-  }
-}
-
-//factory constructors are used when you need more control over object creation
-class Square extends Shape {}
-
-class Circle extends Shape {}
-
-class Shape {
-  Shape(); // Default constructor
-
-  // Factory constructor
-  factory Shape.fromTypeName(String typeName) {
-    if (typeName == 'square') return Square(); // Return a Square instance
-    if (typeName == 'circle') return Circle(); // Return a Circle instance
-    throw ArgumentError(
-        'Unrecognized $typeName'); // Throw an error for invalid type
-  }
-}
-
-// Modificacion para probar commit amend
-
-//List
-
-class Listas_d {
-  List myList = [1, 2, 3, 4, 5];  // Definición de la lista
-
-  Listas_d() {
-    myList.add(50);  // for add to list 
-    myList.removeAt(1); // remove for indice
-    myList.remove(2); // for remove
-  }
-   
-}
-
-// if conditionally add elements
-void L() {
-  bool promoActive = true;
-  
-  // List with a 'if'
-  var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
-
-  print(nav);  
-}
-
-void F() {
-  bool promoActive = true;
-  var listOfInts = [1, 2, 3];
-  
-  // List with 'if' and 'for'
-  var combinedList = [
-    'Home',
-    'Furniture',
-    if (promoActive) 'Outlet',
-    for (var i in listOfInts) 'Item $i'
-  ];
-
-  print(combinedList);  
 }
